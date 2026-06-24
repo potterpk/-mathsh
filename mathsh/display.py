@@ -87,5 +87,7 @@ def print_help():
 
   [bold]built-in commands:[/]
   [cyan]help[/]       this message
-  [cyan]exit/quit[/]  leave mathsh
+  [cyan]bruh[/]       leave mathsh
+  [cyan]whois[/]      also leave mathsh
+  [cyan]iamdumb[/]    leave mathsh (with acknowledgement)
 """)

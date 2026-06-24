@@ -74,10 +74,11 @@ mathsh ~ » rm important_file.txt
 
 ## built-in commands
 
-| command       | action            |
-|---------------|-------------------|
-| `help`        | show this guide   |
-| `exit`/`quit` | leave mathsh      |
+| command       | action                              |
+|---------------|-------------------------------------|
+| `help`        | show this guide                     |
+| `bruh`/`whois` | leave mathsh                        |
+| `iamdumb`      | also leave mathsh (with dignity)    |
 
 ## requirements
 

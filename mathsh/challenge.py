@@ -141,11 +141,14 @@ def _integral():
 
 def _system_of_equations():
     sx, sy = random.randint(1, 5), random.randint(1, 5)
-    # Retry until the coefficient matrix has a non-zero determinant (unique solution)
+    # Retry until the coefficient matrix has a non-zero determinant (unique solution).
+    # Fallback values are pre-chosen to guarantee det != 0.
+    a, b, c, d = 1, 2, 3, 5
     for _ in range(50):
-        a, b = random.randint(1, 4), random.randint(1, 4)
-        c, d = random.randint(1, 4), random.randint(1, 4)
-        if a * d - b * c != 0:
+        a_, b_ = random.randint(1, 4), random.randint(1, 4)
+        c_, d_ = random.randint(1, 4), random.randint(1, 4)
+        if a_ * d_ - b_ * c_ != 0:
+            a, b, c, d = a_, b_, c_, d_
             break
     r1 = a * sx + b * sy
     r2 = c * sx + d * sy

@@ -18,7 +18,10 @@ def execute_command(command: str, cwd: Path) -> Path | None:
             shell=True,
             cwd=str(cwd),
             env={**os.environ, "PWD": str(cwd)},
+            timeout=60,
         )
+    except subprocess.TimeoutExpired:
+        print("mathsh: command timed out (60s)")
     except Exception as e:
         print(f"mathsh: {e}")
 

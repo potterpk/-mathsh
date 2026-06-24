@@ -22,7 +22,7 @@ def main():
         try:
             user_input = console.input(get_prompt(str(cwd))).strip()
         except KeyboardInterrupt:
-            console.print("\n  [dim](ctrl+c again or type exit to quit)[/]")
+            console.print("\n  [dim](ctrl+c again or type bruh / iamdumb to quit)[/]")
             continue
         except EOFError:
             console.print("[dim]\nbye[/]")
@@ -31,8 +31,12 @@ def main():
         if not user_input:
             continue
 
-        if user_input in ("exit", "quit", "q"):
-            console.print("[dim]peace ✌️[/]")
+        if user_input == "iamdumb":
+            console.print("[dim]ok, same 💀 goodbye[/]")
+            break
+
+        if user_input in ("bruh", "whois"):
+            console.print("[dim]Cheerio[/]")
             break
 
         if user_input == "help":
@@ -45,7 +49,7 @@ def main():
         print_challenge(difficulty, question)
 
         try:
-            answer = input("  > ").strip()
+            answer = console.input("  [bold white]>[/] ").strip()
         except (KeyboardInterrupt, EOFError):
             console.print("\n  [dim]aborted[/]")
             continue
