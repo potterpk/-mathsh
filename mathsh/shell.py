@@ -22,7 +22,7 @@ def main():
         try:
             user_input = console.input(get_prompt(str(cwd))).strip()
         except KeyboardInterrupt:
-            console.print("\n  [dim](ctrl+c again or type bruh / iamdumb to quit)[/]")
+            console.print()
             continue
         except EOFError:
             console.print("[dim]\nbye[/]")

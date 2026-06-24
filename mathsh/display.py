@@ -71,8 +71,32 @@ def print_roast():
     console.print(f"  [red]✗ {random.choice(ROASTS)}[/]\n")
 
 
+HELP_TROLL_INTROS = [
+    "oh you need [bold]help[/]? shocking. truly.",
+    "bro typed help 💀 we are so cooked",
+    "you really couldn't figure it out yourself huh",
+    "the fact that you need help with a SHELL is sending me",
+    "help??? in THIS economy???",
+    "reading the manual? in 2025? based actually",
+    "don't worry babe here's your little tutorial 🫶",
+    "sigma male moment: asking for help. respect.",
+]
+
+HELP_TROLL_OUTROS = [
+    "  goodluck bestie you're gonna need it 💅",
+    "  now go touch grass after you solve that integral",
+    "  no more hand holding. you're on your own. godspeed.",
+    "  this has been your ted talk. you're welcome.",
+    "  if you still can't figure it out: cry about it",
+    "  skill issue detected. please git gud.",
+    "  any questions? too bad. figure it out.",
+    "  erm actually 🤓 you should know this already",
+]
+
+
 def print_help():
-    console.print("""
+    console.print(f"\n  {random.choice(HELP_TROLL_INTROS)}\n")
+    console.print("""\
   [bold]how it works:[/]
   every linux command requires a math problem
   difficulty scales with how dangerous the command is:
@@ -86,8 +110,6 @@ def print_help():
   get it right → command runs normally
 
   [bold]built-in commands:[/]
-  [cyan]help[/]       this message
-  [cyan]bruh[/]       leave mathsh
-  [cyan]whois[/]      also leave mathsh
-  [cyan]iamdumb[/]    leave mathsh (with acknowledgement)
+  [cyan]help[/]       this message (you're reading it, genius)
 """)
+    console.print(f"{random.choice(HELP_TROLL_OUTROS)}\n")
