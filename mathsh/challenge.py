@@ -62,16 +62,16 @@ def generate_challenge(difficulty: int):
 
 def _add():
     a, b = random.randint(10, 99), random.randint(10, 99)
-    return f"{a} + {b} = ?", _num_check(a + b)
+    return f"{a} + {b} = ?", _num_check(a + b), str(a + b)
 
 def _subtract():
     a = random.randint(20, 99)
     b = random.randint(1, a)
-    return f"{a} - {b} = ?", _num_check(a - b)
+    return f"{a} - {b} = ?", _num_check(a - b), str(a - b)
 
 def _multiply():
     a, b = random.randint(2, 15), random.randint(2, 15)
-    return f"{a} × {b} = ?", _num_check(a * b)
+    return f"{a} × {b} = ?", _num_check(a * b), str(a * b)
 
 
 # --- Level 2: medium ---
@@ -80,23 +80,23 @@ def _fraction():
     a, b = random.randint(1, 8), random.randint(2, 9)
     c, d = random.randint(1, 8), random.randint(2, 9)
     result = Rational(a, b) + Rational(c, d)
-    return f"{a}/{b} + {c}/{d} = ?", _sympy_check(result)
+    return f"{a}/{b} + {c}/{d} = ?", _sympy_check(result), str(result)
 
 def _power():
     base = random.randint(2, 7)
     exp = random.randint(2, 4)
-    return f"{base}^{exp} = ?", _num_check(base ** exp)
+    return f"{base}^{exp} = ?", _num_check(base ** exp), str(base ** exp)
 
 def _percentage():
     pct = random.choice([10, 15, 20, 25, 50])
     num = random.randint(2, 20) * 10
     answer = (pct * num) // 100
-    return f"{pct}% of {num} = ?", _num_check(answer)
+    return f"{pct}% of {num} = ?", _num_check(answer), str(answer)
 
 def _modulo():
     a = random.randint(20, 99)
     b = random.randint(3, 12)
-    return f"{a} mod {b} = ?", _num_check(a % b)
+    return f"{a} mod {b} = ?", _num_check(a % b), str(a % b)
 
 
 # --- Level 3: hard ---
@@ -107,7 +107,7 @@ def _quadratic():
         b = random.randint(-6, 6)
     expanded = sp.expand((x - a) * (x - b))
     roots = sorted([a, b])
-    return f"solve: {expanded} = 0  (x = ?, comma separated)", _roots_check(roots)
+    return f"solve: {expanded} = 0  (x = ?, comma separated)", _roots_check(roots), ", ".join(str(r) for r in roots)
 
 def _derivative():
     options = [
@@ -119,11 +119,13 @@ def _derivative():
         ("4x² + 6x - 3", 8 * x + 6),
     ]
     expr_str, deriv = random.choice(options)
-    return f"d/dx [{expr_str}] = ?", _sympy_check(deriv)
+    return f"d/dx [{expr_str}] = ?", _sympy_check(deriv), str(deriv)
 
 def _prime_factor():
     n = random.choice([12, 18, 24, 30, 36, 48, 60, 72, 84, 96, 100, 120, 180, 210])
-    return f"prime factorization of {n}  (e.g. 2^2*3)", _factor_check(n)
+    factors = sp.factorint(n)
+    answer_str = "*".join(f"{p}^{e}" if e > 1 else str(p) for p, e in sorted(factors.items()))
+    return f"prime factorization of {n}  (e.g. 2^2*3)", _factor_check(n), answer_str
 
 
 # --- Level 4: nightmare ---
@@ -137,7 +139,7 @@ def _integral():
         ("∫ 4x³ dx", x ** 4),
     ]
     q, ans = random.choice(options)
-    return f"{q} = ?  (ignore +C)", _sympy_check(ans)
+    return f"{q} = ?  (ignore +C)", _sympy_check(ans), str(ans)
 
 def _system_of_equations():
     sx, sy = random.randint(1, 5), random.randint(1, 5)
@@ -153,7 +155,7 @@ def _system_of_equations():
     r1 = a * sx + b * sy
     r2 = c * sx + d * sy
     q = f"{a}x + {b}y = {r1}\n       {c}x + {d}y = {r2}\n       x = ?, y = ?  (format: x,y)"
-    return q, _system_check(sx, sy)
+    return q, _system_check(sx, sy), f"{sx},{sy}"
 
 def _hard_derivative():
     options = [
@@ -162,7 +164,7 @@ def _hard_derivative():
         ("d/dx [5x³ - 2x² + 7x]", 15 * x ** 2 - 4 * x + 7),
     ]
     q, ans = random.choice(options)
-    return f"{q} = ?", _sympy_check(ans)
+    return f"{q} = ?", _sympy_check(ans), str(ans)
 
 
 # --- answer checkers ---

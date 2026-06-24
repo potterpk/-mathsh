@@ -11,6 +11,8 @@ DIFFICULTY_INFO = {
 }
 
 ROASTS = [
+    "not quite, but you'll get it next time",
+    "close, but no cigar",
     "that's not even close lmao",
     "my grandma could do better and she's dead",
     "bro really said that with confidence 💀",
@@ -24,6 +26,8 @@ ROASTS = [
     "did you even try?",
     "wolfram alpha is free you know",
     "calculator.net exists for a reason",
+    "almost! but almost doesn't run commands",
+    "even the shell is raising an eyebrow",
 ]
 
 SUCCESS_MSGS = [
@@ -67,8 +71,9 @@ def print_success():
     console.print(f"  [green]✓ {random.choice(SUCCESS_MSGS)}[/]\n")
 
 
-def print_roast():
-    console.print(f"  [red]✗ {random.choice(ROASTS)}[/]\n")
+def print_roast(correct_answer: str):
+    console.print(f"  [red]✗ {random.choice(ROASTS)}[/]")
+    console.print(f"  [dim]answer was: {correct_answer}[/]\n")
 
 
 HELP_TROLL_INTROS = [

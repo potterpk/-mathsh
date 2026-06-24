@@ -44,7 +44,7 @@ def main():
             continue
 
         difficulty = get_difficulty(user_input)
-        question, check = generate_challenge(difficulty)
+        question, check, correct_answer = generate_challenge(difficulty)
 
         print_challenge(difficulty, question)
 
@@ -60,7 +60,7 @@ def main():
             if new_cwd:
                 cwd = new_cwd
         else:
-            print_roast()
+            print_roast(correct_answer)
 
 
 if __name__ == "__main__":
