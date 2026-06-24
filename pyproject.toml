@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mathsh"
+version = "0.1.0"
+description = "A Linux shell where you pay your math debt to run commands"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "sympy>=1.12",
+    "rich>=13.0",
+]
+
+[project.scripts]
+mathsh = "mathsh.shell:main"
