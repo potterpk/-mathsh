@@ -76,9 +76,8 @@ mathsh ~ » rm important_file.txt
 
 | command       | action                              |
 |---------------|-------------------------------------|
-| `help`        | show this guide                     |
-| `bruh`/`whois` | leave mathsh                        |
-| `iamdumb`      | also leave mathsh (with dignity)    |
+| `help`        | a suprise awaits                    |
+
 
 ## requirements
 
