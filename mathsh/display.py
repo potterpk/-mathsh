@@ -11,32 +11,36 @@ DIFFICULTY_INFO = {
 }
 
 ROASTS = [
-    "not quite, but you'll get it next time",
-    "close, but no cigar",
-    "that's not even close lmao",
-    "my grandma could do better and she's dead",
-    "bro really said that with confidence 💀",
+    "nope lol",
+    "bro said that with his whole chest 💀",
     "L + ratio + failed math",
-    "back to 3rd grade with you",
+    "back to 3rd grade fr",
     "command DENIED. skill issue.",
-    "nah fam that's wrong",
-    "are you sure you graduated?",
-    "the audacity to get that wrong",
-    "even my cat knows that's wrong",
-    "did you even try?",
+    "nah fam",
+    "my grandma could do better and she's dead",
+    "did you even try??",
     "wolfram alpha is free you know",
-    "calculator.net exists for a reason",
-    "almost! but almost doesn't run commands",
-    "even the shell is raising an eyebrow",
+    "that's so wrong it's actually impressive",
+    "calculator.net. use it.",
+    "i'm not even mad, just disappointed",
+    "what was that",
+    "bro really fumbled the math",
+    "you good??",
+    "close only counts in horseshoes and hand grenades",
+    "certified math fail moment",
+    "the shell looked at that and said no",
+    "rm -rf your math knowledge lmaooo",
 ]
 
 SUCCESS_MSGS = [
-    "correct. you may pass, nerd.",
-    "not bad. running your command...",
-    "ok fine. here you go.",
-    "surprisingly correct. proceeding...",
-    "wow, you actually know math.",
-    "begrudgingly running your command...",
+    "fine. go.",
+    "ok nerd. here.",
+    "alright alright, go off",
+    "wow you can do math. gold star or whatever",
+    "grudgingly proceeding...",
+    "i guess that's right. annoying.",
+    "yeah ok. command unlocked.",
+    "ugh fine",
 ]
 
 BANNER = """\
@@ -77,25 +81,25 @@ def print_roast(correct_answer: str):
 
 
 HELP_TROLL_INTROS = [
-    "oh you need [bold]help[/]? shocking. truly.",
-    "bro typed help 💀 we are so cooked",
-    "you really couldn't figure it out yourself huh",
-    "the fact that you need help with a SHELL is sending me",
-    "help??? in THIS economy???",
-    "reading the manual? in 2025? based actually",
-    "don't worry babe here's your little tutorial 🫶",
-    "sigma male moment: asking for help. respect.",
+    "bro typed help 💀",
+    "you really can't figure out a shell huh",
+    "help??? really???",
+    "we are SO cooked if you need help",
+    "fine. here. don't make it weird.",
+    "asking for help is actually sigma ngl",
+    "ok ok ok fine i'll help",
+    "you couldn't figure this out yourself? bold move",
 ]
 
 HELP_TROLL_OUTROS = [
-    "  goodluck bestie you're gonna need it 💅",
-    "  now go touch grass after you solve that integral",
-    "  no more hand holding. you're on your own. godspeed.",
-    "  this has been your ted talk. you're welcome.",
+    "  godspeed. you'll need it.",
+    "  now go touch grass",
+    "  you're on your own now. i did my part.",
     "  if you still can't figure it out: cry about it",
-    "  skill issue detected. please git gud.",
-    "  any questions? too bad. figure it out.",
-    "  erm actually 🤓 you should know this already",
+    "  git gud or go home",
+    "  any questions? google it.",
+    "  good luck bestie 💅",
+    "  don't make me explain it again",
 ]
 
 

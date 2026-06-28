@@ -130,15 +130,32 @@ def _prime_factor():
 
 # --- Level 4: nightmare ---
 
+_EXP_SYMS = {2: "²", 3: "³", 4: "⁴", 5: "⁵"}
+
 def _integral():
-    options = [
-        ("∫ 2x dx", x ** 2),
-        ("∫ 3x² dx", x ** 3),
-        ("∫ x dx", Rational(1, 2) * x ** 2),
-        ("∫ 6x² + 2x dx", 2 * x ** 3 + x ** 2),
-        ("∫ 4x³ dx", x ** 4),
-    ]
-    q, ans = random.choice(options)
+    # pick a random term ∫ a·xⁿ dx = a/(n+1) · x^(n+1), plus optionally a second term
+    n = random.randint(1, 4)
+    a = random.choice([1, 2, 3, 4, 6])
+    # second term (bx^m) or none
+    if random.random() < 0.5:
+        m = random.randint(1, 3)
+        while m == n:
+            m = random.randint(1, 3)
+        b = random.choice([1, 2, 3, 4])
+        coeff_a = Rational(a, n + 1)
+        coeff_b = Rational(b, m + 1)
+        ans = coeff_a * x ** (n + 1) + coeff_b * x ** (m + 1)
+        a_str = "" if a == 1 else str(a)
+        b_str = "" if b == 1 else str(b)
+        n_str = _EXP_SYMS.get(n, f"^{n}") if n > 1 else ""
+        m_str = _EXP_SYMS.get(m, f"^{m}") if m > 1 else ""
+        q = f"∫ {a_str}x{n_str} + {b_str}x{m_str} dx"
+    else:
+        coeff_a = Rational(a, n + 1)
+        ans = coeff_a * x ** (n + 1)
+        a_str = "" if a == 1 else str(a)
+        n_str = _EXP_SYMS.get(n, f"^{n}") if n > 1 else ""
+        q = f"∫ {a_str}x{n_str} dx"
     return f"{q} = ?  (ignore +C)", _sympy_check(ans), str(ans)
 
 def _system_of_equations():
@@ -158,13 +175,16 @@ def _system_of_equations():
     return q, _system_check(sx, sy), f"{sx},{sy}"
 
 def _hard_derivative():
-    options = [
-        ("d/dx [x⁴ - 4x³ + 6x]", 4 * x ** 3 - 12 * x ** 2 + 6),
-        ("d/dx [x³ - 3x² + 3x - 1]", 3 * x ** 2 - 6 * x + 3),
-        ("d/dx [5x³ - 2x² + 7x]", 15 * x ** 2 - 4 * x + 7),
-    ]
-    q, ans = random.choice(options)
-    return f"{q} = ?", _sympy_check(ans), str(ans)
+    # generate a random degree-3 or degree-4 polynomial and differentiate it
+    degree = random.choice([3, 4])
+    coeffs = [random.randint(-6, 6) for _ in range(degree + 1)]
+    while coeffs[0] == 0:
+        coeffs[0] = random.randint(-6, 6)
+    expr = sum(c * x ** (degree - i) for i, c in enumerate(coeffs))
+    deriv = sp.diff(expr, x)
+    expr_str = sp.latex(expr).replace("**", "^")
+    pretty = str(sp.expand(expr))
+    return f"d/dx [{pretty}] = ?", _sympy_check(deriv), str(deriv)
 
 
 # --- answer checkers ---
